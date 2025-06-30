@@ -1,8 +1,9 @@
 from neo4j import GraphDatabase
+from contraseña import NEO4J_PASSWORD
 
 uri = "neo4j://127.0.0.1:7687"
 user = "neo4j"
-password = "mrjixN15HLogwMDZ_w6-6_I9gGEZ8pBiKYvdfjJa8E4"  
+password = NEO4J_PASSWORD  
 
 driver = GraphDatabase.driver(uri, auth=(user, password))
 

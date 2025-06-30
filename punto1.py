@@ -1,12 +1,13 @@
 from pymongo import MongoClient
 from neo4j import GraphDatabase
 import heapq
+from contraseña import NEO4J_PASSWORD
 
 mongo_client = MongoClient("mongodb://localhost:27017")
 mongo_db = mongo_client["viajes_db"]
 
 
-neo4j_driver = GraphDatabase.driver("neo4j://127.0.0.1:7687", auth=("neo4j", "mrjixN15HLogwMDZ_w6-6_I9gGEZ8pBiKYvdfjJa8E4"))
+neo4j_driver = GraphDatabase.driver("neo4j://127.0.0.1:7687", auth=("neo4j", NEO4J_PASSWORD))
 
 # grafo desde Neo4j en memoria
 def construir_grafo(peso_key):
@@ -25,7 +26,7 @@ def construir_grafo(peso_key):
             grafo[origen].append((destino, peso))
     return grafo
 
-# Algoritmo de Dijkstra
+# Dijkstra
 def dijkstra(grafo, inicio, destino):
     heap = [(0, inicio, [])]
     visitados = set()
@@ -42,7 +43,7 @@ def dijkstra(grafo, inicio, destino):
                 heapq.heappush(heap, (costo + peso, vecino, camino))
     return None
 
-# Función principal
+
 def obtener_rutas_mas_baratas():
     cod_usuario = int(input("Ingrese el código del usuario: "))
     medio = input("Ingrese el medio de transporte (bus o avion) en strings: ").strip().lower()
@@ -71,5 +72,5 @@ def obtener_rutas_mas_baratas():
         else:
             print(f"\nNo se encontró ruta de {inicio} a {destino}")
 
-# Ejecutar
+
 obtener_rutas_mas_baratas()
