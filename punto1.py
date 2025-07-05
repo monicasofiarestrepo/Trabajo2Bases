@@ -72,5 +72,5 @@ def obtener_rutas_mas_baratas():
         else:
             print(f"\nNo se encontró ruta de {inicio} a {destino}")
 
-
-obtener_rutas_mas_baratas()
+if __name__ == "__main__":
+    obtener_rutas_mas_baratas()

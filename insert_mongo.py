@@ -1,6 +1,8 @@
 from pymongo import MongoClient
+from contraseña import MONGO_USERNAME, MONGO_PASSWORD
 
-client = MongoClient("mongodb://localhost:27017")
+# Conectar con autenticación
+client = MongoClient(f"mongodb://{MONGO_USERNAME}:{MONGO_PASSWORD}@localhost:27017/")
 db = client["viajes_db"]
 
 #  Eliminar colecciones si existen
@@ -21,6 +23,8 @@ viajes_deseados = [
     {"usu": 10, "nom_lugar_inicio": "Cali", "nom_lugar_destino": "Bogotá"},
     {"usu": 5, "nom_lugar_inicio": "Cali", "nom_lugar_destino": "Bogotá"},
     {"usu": 5, "nom_lugar_inicio": "Medellín", "nom_lugar_destino": "Bogotá"},
+    {"usu": 5, "nom_lugar_inicio": "Cali", "nom_lugar_destino": "Villavicencio"},
+    {"usu": 5, "nom_lugar_inicio": "Medellín", "nom_lugar_destino": "Villavicencio"},
     {"usu": 20, "nom_lugar_inicio": "Villavicencio", "nom_lugar_destino": "Medellín"},
     {"usu": 15, "nom_lugar_inicio": "Villavicencio", "nom_lugar_destino": "Medellín"}
 ]

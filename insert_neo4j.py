@@ -9,11 +9,15 @@ driver = GraphDatabase.driver(uri, auth=(user, password))
 
 lugares = ["Cali", "Medellín", "Bogotá", "Villavicencio"]
 conexiones = [
-    ("Cali", "Medellín", 435, 60, 10),
-    ("Cali", "Bogotá", 447, 70, 15),
-    ("Medellín", "Bogotá", 417, 40, 7),
-    ("Bogotá", "Villavicencio", 86, 30, 5)
+    ("Cali", "Villavicencio", 1000, 999, 999),
+    ("Cali", "Medellín", 200, 50, 10),
+    ("Medellín", "Bogotá", 150, 50, 10),
+    ("Bogotá", "Villavicencio", 100, 50, 10),
+    ("Medellín", "Villavicencio", 800, 60, 10),
+    ("Medellín", "Cali", 100, 40, 10),
+    ("Cali", "Bogotá", 150, 40, 10)
 ]
+
 
 def reiniciar_e_insertar(tx):
     tx.run("MATCH (n) DETACH DELETE n")
